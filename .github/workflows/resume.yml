@@ -1,0 +1,101 @@
+name: Build and email resume
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build-and-email:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+
+      - name: Install LaTeX and PDF validation tools
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y texlive-xetex texlive-latex-extra poppler-utils
+
+      - name: Compile resume PDF
+        run: |
+          xelatex -file-line-error -interaction=nonstopmode -halt-on-error resume.tex
+          test -s resume.pdf
+
+      - name: Validate generated PDF
+        run: |
+          pdfinfo resume.pdf
+          pages="$(pdfinfo resume.pdf | awk '/^Pages:/ {print $2}')"
+          if [ "$pages" != "1" ]; then
+            echo "Expected a one-page resume PDF, but found $pages pages."
+            exit 1
+          fi
+          pdftotext resume.pdf - | grep -q "Kalpana Bharti"
+          echo "PDF validation passed."
+
+      - name: Upload PDF artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: Kalpana-Bharti-Resume
+          path: resume.pdf
+          if-no-files-found: error
+          retention-days: 30
+
+      - name: Email PDF resume
+        env:
+          GMAIL_USERNAME: ${{ secrets.GMAIL_USERNAME }}
+          GMAIL_APP_PASSWORD: ${{ secrets.GMAIL_APP_PASSWORD }}
+          RESUME_EMAIL_TO: ${{ secrets.RESUME_EMAIL_TO }}
+        run: |
+          python - <<'PY'
+          import os
+          import smtplib
+          from email.message import EmailMessage
+          from pathlib import Path
+
+          required = ("GMAIL_USERNAME", "GMAIL_APP_PASSWORD", "RESUME_EMAIL_TO")
+          missing = [name for name in required if not os.environ.get(name)]
+          if missing:
+              raise SystemExit(
+                  "Email step cannot run because these GitHub Actions secrets are missing: "
+                  + ", ".join(missing)
+              )
+
+          pdf_path = Path("resume.pdf")
+          if not pdf_path.is_file() or pdf_path.stat().st_size == 0:
+              raise SystemExit("resume.pdf is missing or empty; refusing to send email.")
+
+          sender = os.environ["GMAIL_USERNAME"].strip()
+          recipient = os.environ["RESUME_EMAIL_TO"].strip()
+          app_password = os.environ["GMAIL_APP_PASSWORD"].replace(" ", "").strip()
+
+          message = EmailMessage()
+          message["Subject"] = "Kalpana Bharti - Updated Resume"
+          message["From"] = sender
+          message["To"] = recipient
+          message.set_content(
+              "Hello,\n\nPlease find Kalpana Bharti's updated resume attached as a PDF.\n\n"
+              "This email was sent automatically by the resume build workflow."
+          )
+          message.add_attachment(
+              pdf_path.read_bytes(),
+              maintype="application",
+              subtype="pdf",
+              filename="Kalpana_Bharti_Resume.pdf",
+          )
+
+          with smtplib.SMTP_SSL("smtp.gmail.com", 465, timeout=30) as smtp:
+              smtp.login(sender, app_password)
+              smtp.send_message(message)
+
+          print("Resume email accepted by Gmail SMTP for delivery.")
+          PY
