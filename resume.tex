@@ -1,308 +1,121 @@
-%-------------------------
-% Entry-level Resume in LaTeX
-% Version - v1.3
-% Last Edits - October 5, 2021
-% Author : Jayesh Sanwal
-% Reach out to me on LinkedIn(/in/jsanwal), with any suggestions, ideas, issues, etc.
-%------------------------
+% Kalpana Bharti — Data Analyst Resume
+% Personalized from the supplied entry-level LaTeX template and resume details.
 
-%%-------------------------------------
-% Notes to the User here -
-% 1) Change " Author+an = {N=highlight}" in "Publications.bib", where N is the number at which your name appears
-% 2) Use "\vspace" wisely, that would change spacing, and is currently being used as a hacky fix
-% 3) Do not delete the fonts in the left side
-% 4) Use the "Rich Text" feature on Overleaf - On the top panel next to source. Makes it much easier for starters on LaTeX to use this template
-% 5) Do NOT use periods at the end of bullet points, the sample (ipsum) text might have it
-% 6) Use "maxbibnames" on this file to change the maximum number of authors on the paper (Credits: Dr. Natasha Krell) - Default is 3, but change line 92 to add authors
-
-%%-------------------------------------
-% Changes from last version (v1.3, October 5, 2021) -
-% 1) Summary statement removed, replaced with 4 keywords on top and Impact statement
-
-% Changes from last version (v1.2, August 23, 2021) -
-% 1) Changes in the Technical Skills section - renamed to just Skills
-% 2) Changed the font size for the name
-% 3) Education to the top
-%%-------------------------------------
-
-
-%%-------------------------------------
-% Changes to be made in the next version -
-% 1) Shift to Class file, make changes here
-% 2) Use a fonts folder
-% 3) Incorporate Leadership & volunteering together
-% 4) Remove \vspace based 'hacky' fixes
-%%-------------------------------------
-
-
-\documentclass[a4,10pt]{article}
-
-%%%%%%% --------------------------------------------------------------------------------------
-%%%%%%%  STARTING HERE, DO NOT TOUCH ANYTHING 
-%%%%%%% --------------------------------------------------------------------------------------
+\documentclass[a4paper,10pt]{article}
 
 \usepackage{latexsym}
 \usepackage[empty]{fullpage}
 \usepackage{titlesec}
- \usepackage{marvosym}
 \usepackage[usenames,dvipsnames]{color}
-\usepackage{verbatim}
 \usepackage[hidelinks]{hyperref}
 \usepackage{fancyhdr}
-\usepackage{multicol}
-\usepackage{hyperref}
-\usepackage{csquotes}
 \usepackage{tabularx}
-\hypersetup{colorlinks=true,urlcolor=black}
-\usepackage[11pt]{moresize}
-\usepackage{setspace}
 \usepackage{fontspec}
 \usepackage[inline]{enumitem}
 \usepackage{array}
-\newcolumntype{P}[1]{>{\centering\arraybackslash}p{#1}}
+\usepackage{geometry}
 \usepackage{anyfontsize}
 
-%%%% Set Margins
-\usepackage[margin=1cm, top=1cm]{geometry}
-
-%%%% Set Fonts
-\setmainfont[
-BoldFont=SourceSansPro-Semibold.otf, %SourceSansPro-Bold.otf
-ItalicFont=SourceSansPro-RegularIt.otf
-]{SourceSansPro-Regular.otf}
+\geometry{margin=1cm,top=0.75cm,bottom=0.75cm}
+\setmainfont[BoldFont=SourceSansPro-Semibold.otf,ItalicFont=SourceSansPro-RegularIt.otf]{SourceSansPro-Regular.otf}
 \setsansfont{SourceSansPro-Semibold.otf}
 
-%%%% Set Page
 \pagestyle{fancy}
-\fancyhf{} 
-\fancyfoot{}
+\setlength{\footskip}{8pt}
+\fancyhf{}
 \renewcommand{\headrulewidth}{0pt}
 \renewcommand{\footrulewidth}{0pt}
-
-%%%% Set URL Style
 \urlstyle{same}
-
-%%%% Set Indentation
 \raggedbottom
 \raggedright
 \setlength{\tabcolsep}{0in}
+\definecolor{UI_blue}{RGB}{32,64,151}
 
-%%%% Set Secondary Color
-\definecolor{UI_blue}{RGB}{32, 64, 151}
-
-%%%% Define New Commands
-\usepackage[style=nature, maxbibnames=3]{biblatex}
-\addbibresource{Publications.bib}
-
-%%%% Bold Name in Publications
-\renewcommand*{\mkbibnamegiven}[1]{%
-\ifitemannotation{highlight}
-{\textbf{#1}}
-{#1}}
-
-\renewcommand*{\mkbibnamefamily}[1]{%
-\ifitemannotation{highlight}
-{\textbf{#1}}
-{#1}}
-
-%%%% Set Sections formatting
-\titleformat{\section}{
-\color{UI_blue} \scshape \raggedright \large 
-}{}{0em}{}[\vspace{-10pt} \hrulefill \vspace{-6pt}]
-
-%%%% Set Subtext Formatting
-\newcommand{\subtext}[1]{
-#1\par\vspace{-0.2cm}}
-
-% \newcommand{\subtextit}[1]{\vspace{0.15cm}
-% \textit{ #1 \vspace{-0.2cm}} }
-
-%%%% Set Item Spacing
-\setlist[itemize]{align=parleft,left=0pt..1em}
-
-%%%% New Itemize "Zitemize" Formatting - tighter spacing than itemize
-\newenvironment{zitemize}{
-\begin{itemize}\itemsep0pt \parskip0pt \parsep1pt}
-{\end{itemize}\vspace{-0.5cm}}
-
-
-%%%% Define Skills Bold Formatting
-\newcommand{\hskills}[1]{
-\textbf{\bfseries #1} }
-
-%%%% Set Subsection formatting
-\titleformat{\subsection}{\vspace{-0.1cm} 
-\bfseries \fontsize{11pt}{2cm}}{}{0em}{}[\vspace{-0.2cm}]
-
-%%%%%%% --------------------------------------------------------------------------------------
-%%%%%%% --------------------------------------------------------------------------------------
-%%%%%%%  END OF "DO NOT TOUCH" REGION
-%%%%%%% --------------------------------------------------------------------------------------
-%%%%%%% --------------------------------------------------------------------------------------
+\titleformat{\section}{\color{UI_blue}\scshape\raggedright\normalsize}{}{0em}{}[\vspace{-6pt}\hrulefill\vspace{-7pt}]
+\titleformat{\subsection}{\vspace{-0.12cm}\bfseries\fontsize{10pt}{11pt}\selectfont}{}{0em}{}[\vspace{-0.18cm}]
+\setlist[itemize]{leftmargin=1.15em,itemsep=0pt,topsep=0pt,parsep=0pt}
+\newcommand{\subtext}[1]{\textit{#1}\par\vspace{-0.08cm}}
+\newcommand{\hskills}[1]{\textbf{#1}}
+\newenvironment{zitemize}{\begin{itemize}}{\end{itemize}\vspace{-0.12cm}}
 
 \begin{document}
 
-%%%%%%% --------------------------------------------------------------------------------------
-%%%%%%%  HEADER
-%%%%%%% --------------------------------------------------------------------------------------
+% Header
 \begin{center}
-    \begin{minipage}[b]{0.24\textwidth}
-            \large (xxx)-xxx-xxxx \\
-            \large \href{mailto:youremail@email.com}{youremail@email.com} 
-    \end{minipage}% 
-    \begin{minipage}[b]{0.5\textwidth}
-            \centering
-            {\Huge John Snow} \\ %
-            \vspace{0.1cm}
-            {\color{UI_blue} \Large{Target Job}} \\
-    \end{minipage}% 
-    \begin{minipage}[b]{0.24\textwidth}
-            \flushright \large  %Willing to Relocate
-            {\href{https://www.linkedin.com/in/link/}{linkedin.com/in/yourlink} } \\
-            \href{https://Add_your_portfolio_here_}{Portfolio}
-    \end{minipage}   
-    
-\vspace{-0.15cm} 
-{\color{UI_blue} \hrulefill}
+    {\Huge\textbf{Kalpana Bharti}}\\[2pt]
+    {\large\color{UI_blue}Data Analyst}\\[4pt]
+    \href{mailto:kalpanabharti776@gmail.com}{kalpanabharti776@gmail.com}\quad $|$ \quad 7701993765\quad $|$\quad Noida, India\\[2pt]
+    \href{https://linkedin.com/in/kalpanabharti}{linkedin.com/in/kalpanabharti}\quad $|$\quad
+    \href{https://github.com/KalpanaBharti}{github.com/KalpanaBharti}
 \end{center}
-\vspace{-0.25cm}
-\begin{minipage}[b]{0.25\textwidth} \textbullet \hspace{0.1cm} Keyword 1 \end{minipage}\begin{minipage}[b]{0.25\textwidth} \textbullet \hspace{0.1cm} Keyword 2  \end{minipage}\begin{minipage}[b]{0.25\textwidth} \textbullet \hspace{0.1cm} Keyword 3 \end{minipage}\begin{minipage}[b]{0.25\textwidth}  \textbullet \hspace{0.1cm} Keyword 4 \end{minipage}
+\vspace{-0.32cm}
+{\color{UI_blue}\hrulefill}
+\vspace{0.02cm}
 
-\hskills{Impact:} A funded research proposals, B technical reports,  \& C scientific publications with X+ downloads \& Y+ citations, Z awards  %% This can be customized, but I feel this impact statement makes people want to read more.
-\vspace{-0.2cm}
+\noindent Data Analyst with a Computer Science background and skills in Python, SQL, Power BI, and Excel. Experienced in data cleaning, exploratory analysis, dashboard development, and communicating actionable insights.
 
+\section{Education}
+\subsection*{B.Tech, Computer Science \& Engineering \hfill 2021 -- 2025}
+MGM College of Engineering \& Technology \hfill CGPA: 7.2
+\vspace{0.08cm}
 
-%%%%%%% --------------------------------------------------------------------------------------
-%%%%%%%  EDUCATION
-%%%%%%% --------------------------------------------------------------------------------------
-\section{Education }
-\subsection*{Master of Science, Microbiology, {\normalsize \normalfont University of the North, GPA: x.xx/4.00} \hfill Mon yyyy --- Mon yyyy} 
-\vspace{0.1cm}
-\subsection*{Bachelor of Science, Electrical Engineering, {\normalsize \normalfont University of Westeros, GPA: x.xx/10.00} \hfill Mon yyyy --- Mon yyyy} 
-\vspace{0.2cm}
+\subsection*{12th, Senior Secondary -- PCM \hfill 2020 -- 2021}
+Government Girls Inter College, Ghaziabad
 
+\section{Projects}
+\subsection*{Festival Sales Analysis}
+\subtext{Skills: Python, Excel, Exploratory Data Analysis, KPI Analysis}
+\begin{zitemize}
+    \item Cleaned and analyzed festival sales data with Python and Excel to identify customer and sales patterns.
+    \item Built KPI dashboards by state, category, gender, and age group; highlighted high-value segments to inform marketing and inventory decisions.
+\end{zitemize}
 
+\subsection*{Customer Churn Prediction}
+\subtext{Skills: Python, Machine Learning, EDA, Model Evaluation}
+\begin{zitemize}
+    \item Built a churn-prediction workflow covering preprocessing, exploratory analysis, feature engineering, and SVM, Random Forest, Logistic Regression, and MLP models.
+    \item Investigated churn drivers and compared models using accuracy, MSE, and confusion matrices to support customer-retention analysis.
+\end{zitemize}
 
-%%%%%%% --------------------------------------------------------------------------------------
-%%%%%%%  ACADEMIC PROJECTS
-%%%%%%% --------------------------------------------------------------------------------------
-\section{Projects} %% (Or "Research", select as appropriate)
+\subsection*{Uber Data Analytics Dashboard}
+\subtext{Skills: Power BI, DAX, Data Modeling, Data Visualization}
+\begin{zitemize}
+    \item Built an interactive Power BI dashboard for ride KPIs including fares, average duration, distance, and night-trip percentage.
+    \item Created fact-dimension models, DAX measures, slicers, and trend visuals to analyze ride patterns and peak hours.
+\end{zitemize}
 
-%%% ----- Best way to write items (Credit - FAANGPath.com)
-        % \item Achieved X\% growth for XYZ using A, B, and C skills.
-        % \item Led XYZ which led to X\% of improvement in ABC
-        % \item Developed XYZ that did A, B, and C using X, Y, and Z. 
+\subsection*{Global Superstore Dataset Analysis}
+\subtext{Skills: Excel, PivotTables, PivotCharts}
+\begin{zitemize}
+    \item Created an Excel dashboard using PivotTables, PivotCharts, and slicers to analyze sales, profit, discounts, and shipping.
+    \item Examined high-profit regions, loss causes, and shipping costs to support business analysis.
+\end{zitemize}
 
-
-%%%%%%% ----------------------------------- Role 1 ----------------------------------- %%%%%%%
-\subsection*{Role 1, {\normalsize\normalfont Department Name} \hfill Mon yyyy --- Mon yyyy} 
-    \begin{zitemize}
-        \item Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus suscipit scelerisque urna, id facilisis metus vestibulum at. In nec sapien dignissim, ultricies dolor accumsan, malesuada augue 
-        \item Aenean nec dui et felis mattis suscipit ut sed tortor. Sed nec viverra nulla. Mauris in dapibus quam.Aenean ut ligula sed orci interdum scelerisque. Cras eget odio mattis, accumsan arcu ac, interdum enim. Quisque et pharetra sem, in euismod leo 
-    \end{zitemize}
-
-
-%%%%%%% ----------------------------------- Role 2 ----------------------------------- %%%%%%%
-\subsection*{Role 2, {\normalsize\normalfont Department Name} \hfill Mon yyyy --- Mon yyyy} 
-    \begin{zitemize}
-        \item Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus suscipit scelerisque urna, id facilisis metus vestibulum at. In nec sapien dignissim, ultricies dolor accumsan, malesuada augue 
-        \item Aenean nec dui et felis mattis suscipit ut sed tortor. Sed nec viverra nulla. Mauris in dapibus quam.Aenean ut ligula sed orci interdum scelerisque. Cras eget odio mattis, accumsan arcu ac, interdum enim. Quisque et pharetra sem, in euismod leo 
-    \end{zitemize}
-
-
-%%%%%%% ----------------------------------- Role 3 ----------------------------------- %%%%%%%
-\subsection*{Role 3, {\normalsize\normalfont Department Name} \hfill Mon yyyy --- Mon yyyy} 
-    \begin{zitemize}
-        \item Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus suscipit scelerisque urna, id facilisis metus vestibulum at. In nec sapien dignissim, ultricies dolor accumsan, malesuada augue 
-        \item Aenean nec dui et felis mattis suscipit ut sed tortor. Sed nec viverra nulla. Mauris in dapibus quam.Aenean ut ligula sed orci interdum scelerisque. Cras eget odio mattis, accumsan arcu ac, interdum enim. Quisque et pharetra sem, in euismod leo 
-    \end{zitemize}
-
-
-
-%%%%%%% --------------------------------------------------------------------------------------
-%%%%%%%  WORK EXPERIENCE
-%%%%%%% --------------------------------------------------------------------------------------
 \section{Experience}
+\subsection*{Data Analyst Trainee \hfill Jul 2025 -- Nov 2025}
+\subtext{Idemia India Foundation \hfill Noida}
+\begin{zitemize}
+    \item Built skills in Python, Excel, Power BI, SQL, MySQL, and statistics through training.
+    \item Streamlined data workflows by 31\% through optimized data-cleaning processes, supporting timely business insights.
+\end{zitemize}
 
-%%% ----- Best way to write items (Credit - ResumePuppy.com)
-        % \item Developed AngularJS microservice to automate parsing of ~300 emails/day for efficient service request categorization using Linux MBox & Perl scripts; reduced manual re-allocation by 87%.
-        % \item Led the development, build and bring-up execution of Lyft’s first functional AV platform from start to finish; established fleet-grade product reliability over 5 months.
-        % \item Enhanced user experience by fine-tuning stored procedures & SQL queries for efficient data retrieval from ~4M records accessed by 5000+ users worldwide.
-        % \item Built a custom menu single handedly using HTML5, CSS3, XML and JSP and improved the performance of existing application by tuning the PL/SQL scripts by 20\% and reduced on-migration time.
-        
+\section{Technical Skills}
+\begin{tabularx}{\textwidth}{@{}p{2.5cm} X@{}}
+\hskills{Programming} & Python, SQL, HTML5, CSS3 \\
+\hskills{Data Analysis} & pandas, NumPy, Statistics, Exploratory Data Analysis, Data Cleaning, Data Transformation \\
+\hskills{Visualization} & Power BI, DAX, matplotlib, Seaborn, Data Modeling, Data Visualization \\
+\hskills{Tools} & Microsoft Excel, Advanced Excel, Microsoft 365, Git, GitHub, MySQL \\
+\hskills{Other} & Business Intelligence, Modern AI Tools, Copilot 365, Communication
+\end{tabularx}
 
-%%%%%%% ----------------------------------- Role 4 ----------------------------------- %%%%%%%
-\subsection*{XXX Scientist {\normalsize\normalfont (Intern)} \hfill Mon yyyy --- Mon yyyy} 
-\subtext{Add Company Name Here \hfill Location} 
-    \begin{zitemize}
-        \item Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer sit amet justo porta magna ultrices ultricies. Nam sem augue, lobortis sit amet venenatis sed, rutrum vel dui. Fusce mauris libero, ultrices quis convallis venenatis, malesuada at neque. Vivamus facilisis metus enim, convallis egestas dui dictum vel. Integer lacus nisl, molestie vitae bibendum eget, finibus vitae ligula. 
-        \item Duis fermentum arcu vitae faucibus cursus. Praesent aliquet id risus dictum lobortis. Donec varius tincidunt aliquet.Nulla congue nulla sed accumsan consequat. Pellentesque facilisis cursus faucibus.
-    \end{zitemize}
+\section{Certifications}
+\begin{zitemize}
+    \item Women in Data II -- Dell Technologies
+    \item Business Analytics with Excel -- Microsoft
+    \item Professional Skill Development Program -- Sopra Steria India Foundation
+\end{zitemize}
 
+\section{Interests}
+Technology \quad $\bullet$ \quad Data \quad $\bullet$ \quad Artificial Intelligence
 
-%%%%%%% ----------------------------------- Role 5 ----------------------------------- %%%%%%%
-\subsection*{YYY Engineer {\normalsize\normalfont (Intern)} \hfill Mon yyyy --- Mon yyyy} 
-\subtext{Add Company Name Here \hfill Location} 
-    \begin{zitemize}
-        \item Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer sit amet justo porta magna ultrices ultricies. Nam sem augue, lobortis sit amet venenatis sed, rutrum vel dui. Fusce mauris libero, ultrices quis convallis venenatis, malesuada at neque. 
-        \item Duis fermentum arcu vitae faucibus cursus. Praesent aliquet id risus dictum lobortis. Donec varius tincidunt aliquet.
-    \end{zitemize}
-
-
-
-
-%%%%%%% --------------------------------------------------------------------------------------
-%%%%%%%  SKILLS
-%%%%%%% --------------------------------------------------------------------------------------
-\section{Skills}
-\begin{tabular}{p{7em} p{48em}}
-\hskills{Physics} &  A, B, C, D, E, F \\
-\hskills{Management} & G, H, I, J, K, L, M  \\
-\hskills{Programming} & N, O, P, Q, R, S, T \\
-\end{tabular}
-\vspace{-0.2cm}
-
-
-
-%%%%%%% --------------------------------------------------------------------------------------
-%%%%%%%  VOLUNTEER EXPERIENCE
-%%%%%%% --------------------------------------------------------------------------------------
-% \section{Volunteer (or LEADERSHIP) Experience}
-
-%%%%%%% ----------------------------------- Role 6 ----------------------------------- %%%%%%%
-% \subsection*{Position, Org \hfill Mon yyyy --- Mon yyyy} 
-%     \begin{zitemize}
-            % \item \textbf{Short Project Title.} {Build a project that does something and had quantified success using A, B, and C.}
-%     \end{zitemize}
-
-
-%%%%%%% ----------------------------------- Role 6 ----------------------------------- %%%%%%%
-% \subsection*{Position, Org \hfill Mon yyyy --- Mon yyyy} 
-%     \begin{zitemize}
-            % \item \textbf{Short Project Title.} {Build a project that does something and had quantified success using A, B, and C.}
-%     \end{zitemize}
-
-
-
-%%%%%%% --------------------------------------------------------------------------------------
-%%%%%%%  PUBLICATIONS
-%%%%%%% --------------------------------------------------------------------------------------
-\section{Publications} 
-\renewcommand\refname{\vskip -1.5em}
-\nocite{*}
-\printbibliography[heading=none]
-\vspace{-0.4cm}
-
-
-
-%%%%%%% --------------------------------------------------------------------------------------
-%%%%%%%  AWARDS & HONORS
-%%%%%%% --------------------------------------------------------------------------------------
-\section{Awards \& Honors}
-\begin{tabular}[t]{ p{4em} p{50em}}
-\hskills{yyyy} & Award 1 (\hskills{\$xxxxxx}); Award 2 (\hskills{\$xxxxxx}); Award 3 (\hskills{\$xxxxxx}); Award 4 (\hskills{\$xxxxxx}); Award 5 (\hskills{\$xxxxxx}) \\ % 
-\hskills{yyyy} & Award 6 (\hskills{\$xxxxxx}); Award 7 (\hskills{\$xxxxxx}); Award 8 (\hskills{\$xxxxxx}) \\
-\end{tabular} 
-
-%%%%%%% ---------------------------- END DOC HERE ---------------------------- %%%%%%% 
 \end{document}
