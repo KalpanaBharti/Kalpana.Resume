@@ -17,7 +17,7 @@
 \usepackage{anyfontsize}
 \usepackage{fontawesome5}
 
-\geometry{margin=1cm,top=0.75cm,bottom=0.75cm}
+\geometry{margin=1.05cm,top=0.8cm,bottom=0.8cm}
 \setmainfont[BoldFont=SourceSansPro-Semibold.otf,ItalicFont=SourceSansPro-RegularIt.otf]{SourceSansPro-Regular.otf}
 \setsansfont{SourceSansPro-Semibold.otf}
 
@@ -32,12 +32,15 @@
 \setlength{\tabcolsep}{0in}
 \definecolor{UI_blue}{RGB}{32,64,151}
 
-\titleformat{\section}{\color{UI_blue}\scshape\raggedright\normalsize}{}{0em}{}[\vspace{-6pt}\hrulefill\vspace{-7pt}]
-\titleformat{\subsection}{\vspace{-0.12cm}\bfseries\fontsize{10pt}{11pt}\selectfont}{}{0em}{}[\vspace{-0.18cm}]
-\setlist[itemize]{leftmargin=1.15em,itemsep=0pt,topsep=0pt,parsep=0pt}
-\newcommand{\subtext}[1]{\textit{#1}\par\vspace{-0.08cm}}
+\titleformat{\section}{\color{UI_blue}\scshape\raggedright\normalsize}{}{0em}{}[\vspace{-3pt}\hrulefill\vspace{-4pt}]
+\titlespacing*{\section}{0pt}{8pt}{5pt}
+\titleformat{\subsection}{\bfseries\fontsize{9.7pt}{12pt}\selectfont}{}{0em}{}[\vspace{-0.05cm}]
+\titlespacing*{\subsection}{0pt}{4pt}{2pt}
+\setlist[itemize]{leftmargin=1.15em,itemsep=1.5pt,topsep=2pt,parsep=0.5pt}
+\newcommand{\subtext}[1]{\textit{#1}\par\vspace{0.02cm}}
 \newcommand{\hskills}[1]{\textbf{#1}}
-\newenvironment{zitemize}{\begin{itemize}}{\end{itemize}\vspace{-0.12cm}}
+\newcommand{\projecttitle}[2]{\noindent\textbf{#1}\hfill{\small\color{UI_blue}\href{#2}{GitHub}}\par\vspace{1pt}}
+\newenvironment{zitemize}{\begin{itemize}}{\end{itemize}\vspace{0.02cm}}
 
 \begin{document}
 
@@ -71,41 +74,13 @@ MGM College of Engineering \& Technology \hfill CGPA: 7.2
 \subsection*{12th, Senior Secondary -- PCM \hfill 2020 -- 2021}
 Government Girls Inter College, Ghaziabad
 
-\section{Projects}
-\subsection*{Festival Sales Analysis}
-\subtext{Skills: Python, Excel, Exploratory Data Analysis, KPI Analysis}
-\begin{zitemize}
-    \item Cleaned and analyzed festival sales data with Python and Excel to identify customer and sales patterns.
-    \item Built KPI dashboards by state, category, gender, and age group; highlighted high-value segments to inform marketing and inventory decisions.
-\end{zitemize}
-
-\subsection*{Customer Churn Prediction}
-\subtext{Skills: Python, Machine Learning, EDA, Model Evaluation}
-\begin{zitemize}
-    \item Built a churn-prediction workflow covering preprocessing, exploratory analysis, feature engineering, and SVM, Random Forest, Logistic Regression, and MLP models.
-    \item Investigated churn drivers and compared models using accuracy, MSE, and confusion matrices to support customer-retention analysis.
-\end{zitemize}
-
-\subsection*{Uber Data Analytics Dashboard}
-\subtext{Skills: Power BI, DAX, Data Modeling, Data Visualization}
-\begin{zitemize}
-    \item Built an interactive Power BI dashboard for ride KPIs including fares, average duration, distance, and night-trip percentage.
-    \item Created fact-dimension models, DAX measures, slicers, and trend visuals to analyze ride patterns and peak hours.
-\end{zitemize}
-
-\subsection*{Global Superstore Dataset Analysis}
-\subtext{Skills: Excel, PivotTables, PivotCharts}
-\begin{zitemize}
-    \item Created an Excel dashboard using PivotTables, PivotCharts, and slicers to analyze sales, profit, discounts, and shipping.
-    \item Examined high-profit regions, loss causes, and shipping costs to support business analysis.
-\end{zitemize}
-
 \section{Experience}
-\subsection*{Data Analyst Trainee \hfill Jul 2025 -- Nov 2025}
-\subtext{Idemia India Foundation \hfill Noida}
+\subsection*{GIS Data Analyst -- Apprentice \hfill Oct 2025 -- Present}
+\subtext{CYIENT \hfill Noida, India}
 \begin{zitemize}
-    \item Built skills in Python, Excel, Power BI, SQL, MySQL, and statistics through training.
-    \item Streamlined data workflows by 31\% through optimized data-cleaning processes, supporting timely business insights.
+    \item Analyze operational data, including task completion, time utilization, and user activity, to evaluate productivity, quality, and efficiency.
+    \item Prepare Excel reports and Power BI dashboards to track KPIs, target achievement, profitability, and area-wise performance.
+    \item Apply SQL JOINs, subqueries, and aggregate functions to query and analyze datasets through hands-on projects.
 \end{zitemize}
 
 \section{Technical Skills}
@@ -116,6 +91,31 @@ Government Girls Inter College, Ghaziabad
 \hskills{Tools} & Microsoft Excel, Advanced Excel, Microsoft 365, Git, GitHub, MySQL \\
 \hskills{Other} & Business Intelligence, Modern AI Tools, Copilot 365, Communication
 \end{tabularx}
+
+\section{Projects}
+\projecttitle{Festival Sales Analysis}{https://github.com/KalpanaBharti/Festival-Sales-Analysis}
+\subtext{Skills: Python, Excel, Exploratory Data Analysis, KPI Analysis}
+\begin{zitemize}
+    \item Cleaned and analyzed festival sales data with Python and Excel to identify customer and sales patterns.
+    \item Built KPI dashboards by state, category, gender, and age group; highlighted high-value segments to inform marketing and inventory decisions.
+    \item Used the findings to compare customer purchasing patterns across demographic groups and summarize sales trends for business review.
+\end{zitemize}
+
+\projecttitle{Uber Data Analytics Dashboard}{https://github.com/Kalpanabharti/Uber_Data_Analytics}
+\subtext{Skills: Power BI, DAX, Data Modeling, Data Visualization}
+\begin{zitemize}
+    \item Built an interactive Power BI dashboard for ride KPIs including fares, average duration, distance, and night-trip percentage.
+    \item Created fact-dimension models, DAX measures, slicers, and trend visuals to analyze ride patterns and peak hours.
+    \item Organized dashboard views around key ride metrics so users can explore trip performance and compare patterns across selected filters.
+\end{zitemize}
+
+\projecttitle{Global Superstore Dataset Analysis}{https://github.com/KalpanaBharti/MyStore-Data-Analysis}
+\subtext{Skills: Excel, PivotTables, PivotCharts}
+\begin{zitemize}
+    \item Created an Excel dashboard using PivotTables, PivotCharts, and slicers to analyze sales, profit, discounts, and shipping.
+    \item Examined high-profit regions, loss causes, and shipping costs to support business analysis.
+    \item Used interactive filters and summary views to make comparisons across products, regions, and shipping performance easier.
+\end{zitemize}
 
 \section{Certifications}
 \begin{zitemize}
